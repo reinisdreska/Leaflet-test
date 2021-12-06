@@ -5,13 +5,27 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
     <style>
-        #map {position: absolute; top: 0; bottom: 0; left: 0; right: 0;}
+        #map {position: absolute; top: 0; bottom: 0; left: 0; right: 0; z-index: -1;}
+        #serandin {position: absolute; top: 0; right: 0; width: auto; height: auto; background-color: #fff; opacity: 0.8; border-radius: 5px;}
     </style>
 </head>
 
 <body>
     <div id="map"></div>
+    <div id="serandin">
+        <form action="" method="post">
+            <p>Track ID <input type = "integer" name = "place_id" /></p>
+            <p>Track name <input type = "text" name = "name" /></p>
+            <p>Description <input type = "text" name = "description" /></p>
+            <p>Latitude <input type = "integer" name = "latitude" id="latitude" /></p>
+            <p>Longitude <input type ="integer" name="longitude" id="longitude" /></p>
+            <p><input type = "submit" value = "Submit" /></p>
+        </form>
+    </div>
     <script>
+        let inputLat = document.querySelector("#latitude")
+        let inputLon = document.querySelector("#longitude")
+
         var map = L.map('map').setView([56.956, 24.103], 13);
         L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=uztdFESsBtScB4ZVqUCi', {
             attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
@@ -26,6 +40,8 @@
                 map.removeLayer(picked);
             };
             picked = L.marker([latitude, longitude]).addTo(map);
+            inputLat.value = latitude
+            inputLon.value = longitude
         });
     </script>
 </body>

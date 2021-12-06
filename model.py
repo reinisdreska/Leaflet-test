@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
     
-db =SQLAlchemy()
+db = SQLAlchemy()
     
 class place_model(db.Model):
     __tablename__ = "table"

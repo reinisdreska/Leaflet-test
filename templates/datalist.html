@@ -1,0 +1,5 @@
+{% for place in places %}
+    <form action = "http://localhost:5000/data/{{place.place_id}}" method = "POST">  
+        <h3>{{place}}<!-- <button class="btn btn-dark">Open data</button>--></h3><hr>
+    </form>
+{% endfor %}
