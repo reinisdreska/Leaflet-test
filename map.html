@@ -16,11 +16,16 @@
         L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=uztdFESsBtScB4ZVqUCi', {
             attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
         }).addTo(map);
+        var picked = {}
         map.on('click', function(e){
             var coord = e.latlng;
             var latitude = coord.lat;
             var longitude = coord.lng;
             console.log("You clicked the map at latitude: " + latitude + " and longitude: " + longitude);
+            if (picked != undefined) {
+                map.removeLayer(picked);
+            };
+            picked = L.marker([latitude, longitude]).addTo(map);
         });
     </script>
 </body>
