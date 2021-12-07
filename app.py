@@ -33,7 +33,7 @@ def index():
 @app.route("/data")
 def RetrieveList():
     places = place_model.query.all()
-    return render_template("datalist.html", places=places)
+    return render_template("datalist.html", places=places, title="Data")
 
 @app.route("/data/<int:id>")
 def RetrieveEmployee(id):

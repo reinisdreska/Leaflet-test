@@ -1,10 +1,14 @@
-<h3>Id</h3>
-<p>{{place.place_id}}</p><hr>
-<h3>Name</h3>
-<p>{{place.name}}</p><hr>
-<h3>description</h3>
-<p>{{place.description}}</p><hr>
-<h3>latitude</h3>
-<p>{{place.latitude}}</p><hr>
-<h3>longitude</h3>
-<p>{{place.longitude}}</p><hr>
+{% extends "base.html" %}
+
+{% block content %}
+    <h3>Id</h3>
+    <p>{{place.place_id}}</p><hr>
+    <h3>Name</h3>
+    <p>{{place.name}}</p><hr>
+    <h3>description</h3>
+    <p>{{place.description}}</p><hr>
+    <h3>latitude</h3>
+    <p>{{place.latitude}}</p><hr>
+    <h3>longitude</h3>
+    <p>{{place.longitude}}</p><hr>
+{% endblock %}
