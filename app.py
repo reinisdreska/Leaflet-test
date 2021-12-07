@@ -34,3 +34,8 @@ def index():
 def RetrieveList():
     places = place_model.query.all()
     return render_template("datalist.html", places=places)
+
+@app.route("/data/<int:id>")
+def RetrieveEmployee(id):
+    place = place_model.query.filter_by(place_id=id).first()
+    return render_template("data.html", place=place)
