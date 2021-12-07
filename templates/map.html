@@ -35,7 +35,6 @@
             var coord = e.latlng;
             var latitude = coord.lat;
             var longitude = coord.lng;
-            console.log("You clicked the map at latitude: " + latitude + " and longitude: " + longitude);
             if (picked != undefined) {
                 map.removeLayer(picked);
             };
@@ -43,6 +42,25 @@
             inputLat.value = latitude
             inputLon.value = longitude
         });
+        
+        let place_info =[]
+        let place_array_string = '{{place_array|tojson}}'
+        place_array_string = place_array_string.replace("[", "").replace("]", "").replace(/}, /gs, "}|")
+        place_array = place_array_string.split("|")
+        for (let i=0; i<place_array.length; i++){
+            place_obj = JSON.parse(place_array[i])
+            place_info.push(place_obj)
+            markes(place_info)
+        }
+
+        function markes(place_info) {
+            if(place_info.length == place_array.length){
+                for (let i=0; i<place_info.length; i++){
+                    place_info_obj = place_info[i]
+                    L.marker([place_info_obj.latitude, place_info_obj.longitude]).addTo(map);
+                }
+            }
+        }
     </script>
 </body>
 

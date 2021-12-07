@@ -15,7 +15,14 @@ def create_table():
 @app.route('/', methods=["GET", "POST"])
 def index():
     if request.method == "GET":
-        return render_template("map.html")
+        place_array = []
+        if len(place_model.query.all()) > 0:
+            for i in range(len(place_model.query.all())):
+                place = place_model.query.filter_by(id=i+1).first()
+                place_info = {"id":place.place_id, "name":place.name, "description":place.description, "latitude":place.latitude, "longitude":place.longitude}
+                place_array.append(place_info)
+
+        return render_template("map.html", place_array=place_array)
 
     if request.method == "POST":
         place_id = request.form["place_id"]
