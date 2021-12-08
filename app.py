@@ -19,19 +19,18 @@ def index():
         if len(place_model.query.all()) > 0:
             for i in range(len(place_model.query.all())):
                 place = place_model.query.filter_by(id=i+1).first()
-                place_info = {"id":place.place_id, "name":place.name, "description":place.description, "latitude":place.latitude, "longitude":place.longitude}
+                place_info = {"name":place.name, "description":place.description, "latitude":place.latitude, "longitude":place.longitude}
                 place_array.append(place_info)
 
         return render_template("map.html", place_array=place_array)
 
     if request.method == "POST":
-        place_id = request.form["place_id"]
         name = request.form["name"]
         description = request.form["description"]
         latitude = request.form["latitude"]
         longitude = request.form["longitude"]
         place = place_model(
-            place_id=place_id, name=name, description=description, latitude=latitude, longitude=longitude
+            name=name, description=description, latitude=latitude, longitude=longitude
         )
         db.session.add(place)
         db.session.commit()
@@ -44,12 +43,12 @@ def RetrieveList():
 
 @app.route("/data/<int:id>")
 def RetrieveEmployee(id):
-    place = place_model.query.filter_by(place_id=id).first()
+    place = place_model.query.filter_by(id=id).first()
     return render_template("data.html", place=place)
 
 @app.route("/data/<int:id>/update", methods=["GET", "POST"])
 def update(id):
-    place = place_model.query.filter_by(place_id=id).first()
+    place = place_model.query.filter_by(id=id).first()
     if request.method == "POST":
         if place:
             db.session.delete(place)
@@ -59,7 +58,7 @@ def update(id):
             latitude = request.form["latitude"]
             longitude = request.form["latitude"]
             place = place_model(
-                place_id=id, name=name, description=description, latitude=latitude, longitude=longitude)
+                name=name, description=description, latitude=latitude, longitude=longitude)
             db.session.add(place)
             db.session.commit()
             return redirect(f"/data")

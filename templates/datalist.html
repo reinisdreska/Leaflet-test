@@ -4,6 +4,6 @@
     <h1>{{ title }}</h1>
     <hr>
     {% for place in places %}
-        <a href="http://localhost:5000/data/{{place.place_id}}"><h3>{{place}}</h3></a><hr>
+        <a href="http://localhost:5000/data/{{place.id}}"><h3>{{place}}</h3></a><hr>
     {% endfor %}
 {% endblock %}

@@ -6,14 +6,12 @@ class place_model(db.Model):
     __tablename__ = "table"
 
     id = db.Column(db.Integer, primary_key=True)
-    place_id = db.Column(db.Integer(),unique = True)
     name = db.Column(db.String())
     description = db.Column(db.Text())
     latitude = db.Column(db.Float())
     longitude = db.Column(db.Float())
 
-    def __init__(self, place_id, name, description, latitude, longitude):
-        self.place_id = place_id
+    def __init__(self, name, description, latitude, longitude):
         self.name = name
         self.description = description
         self.latitude = latitude
