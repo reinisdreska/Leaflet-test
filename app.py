@@ -46,3 +46,22 @@ def RetrieveList():
 def RetrieveEmployee(id):
     place = place_model.query.filter_by(place_id=id).first()
     return render_template("data.html", place=place)
+
+@app.route("/data/<int:id>/update", methods=["GET", "POST"])
+def update(id):
+    place = place_model.query.filter_by(place_id=id).first()
+    if request.method == "POST":
+        if place:
+            db.session.delete(place)
+            db.session.commit()
+            name = request.form["name"]
+            description = request.form["description"]
+            latitude = request.form["latitude"]
+            longitude = request.form["latitude"]
+            place = place_model(
+                place_id=id, name=name, description=description, latitude=latitude, longitude=longitude)
+            db.session.add(place)
+            db.session.commit()
+            return redirect(f"/data")
+
+    return render_template("update.html", place=place, title="Update")

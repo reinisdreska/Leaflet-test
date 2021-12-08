@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action='' method = "POST">
+        <p>Name <input type = "text" name = "name" value="{{place.name}}"/></p>
+        <p>Description <input type = "integer" name = "description"  value="{{place.description}}"/></p>
+        <p>Latitude <input type = "text" name = "latitude" value="{{place.latitude}}"/></p>
+        <p>Longitude <input type = "text" name = "longitude" value="{{place.longitude}}"/></p>
+        <p><input type = "submit" value = "Submit" /></p>
+    </form>
+{% endblock %}
