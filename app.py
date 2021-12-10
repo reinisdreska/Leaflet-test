@@ -24,6 +24,11 @@ def index():
 
         return render_template("map.html", place_array=place_array)
 
+@app.route("/add", methods=["GET", "POST"])
+def add_track():
+    if request.method == "GET":
+        return render_template("add.html", title="Add track")
+
     if request.method == "POST":
         name = request.form["name"]
         description = request.form["description"]
@@ -34,7 +39,7 @@ def index():
         )
         db.session.add(place)
         db.session.commit()
-        return redirect("/data")
+        return redirect("/")
 
 @app.route("/data")
 def RetrieveList():

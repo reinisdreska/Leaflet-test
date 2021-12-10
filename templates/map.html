@@ -6,21 +6,11 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
     <style>
         #map {position: absolute; top: 0; bottom: 0; left: 0; right: 0; z-index: -1;}
-        #serandin {position: absolute; top: 0; right: 0; width: auto; height: auto; background-color: #fff; opacity: 0.8; border-radius: 5px;}
     </style>
 </head>
 
 <body>
     <div id="map"></div>
-    <div id="serandin">
-        <form action="" method="post">
-            <p>Track name <input type = "text" name = "name" /></p>
-            <p>Description <input type = "text" name = "description" /></p>
-            <p>Latitude <input type = "integer" name = "latitude" id="latitude" /></p>
-            <p>Longitude <input type ="integer" name="longitude" id="longitude" /></p>
-            <p><input type = "submit" value = "Submit" /></p>
-        </form>
-    </div>
     <script>
         let inputLat = document.querySelector("#latitude")
         let inputLon = document.querySelector("#longitude")

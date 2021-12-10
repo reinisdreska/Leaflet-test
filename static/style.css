@@ -14,3 +14,41 @@ h3 {
 p {
     text-align:center;
 }
+
+#map {
+    position: absolute;
+    top: 44px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
+#map_add {
+    position: relative;
+    margin-top: 80px;
+    height: 400px;
+    width: 100%;
+}
+
+.add form {
+    padding-top: 10px;
+    text-align: justify;
+}
+
+.add input {
+    background-color: rgb(202, 202, 202);
+    color: rgb(37, 131, 103);
+    width: 49%;
+}
+
+.add #submit {
+    width: 100%;
+    color: rgb(37, 131, 103);
+    text-transform: uppercase;
+}
+
+.add input::placeholder {
+    color: rgb(37, 131, 103);
+    text-transform: uppercase;
+}
