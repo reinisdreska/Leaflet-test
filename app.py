@@ -69,3 +69,10 @@ def update(id):
             return redirect(f"/data")
 
     return render_template("update.html", place=place, title="Update")
+
+@app.route("/data/<int:id>/delete", methods=["GET", "POST"])
+def delete(id):
+    place = place_model.query.filter_by(id=id).first()
+    db.session.delete(place)
+    db.session.commit()
+    return redirect(f"/data")
